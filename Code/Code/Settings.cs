@@ -8,12 +8,10 @@ namespace CollectorzToMediaCenter
     using System.Xml;
 
     /// <summary>
-    /// stores all parameters configured by settings-files.<br/>
+    /// stores all parameters configured by xml-files<br/>
     /// <br/>
-    /// used settings-files<br/>
-    /// settingsMovieCollector.settings - settings related to data storage in MovieCollector<br/>
-    /// settingsKodi.settings - settings related to Kodi<br/>
-    /// settingsServer.settings - settings related to your local server structure<br/>
+    /// used xml-files<br/>
+    /// TranslationLanguageIsoCodeToDescriptionEnUs.xml - provides values used for languageIsoCodeToDescription dictionary in EN-US<br/>
     /// </summary>
     public class Settings
     {
@@ -952,9 +950,9 @@ namespace CollectorzToMediaCenter
             #region Translations
             this.translationLanguageIsoCodeToDescription = new Dictionary<string, string>();
 
-            foreach (XmlNode xmlTranslationLanguageIsoCodeToDescription in BaseClassExtention.XmlReadFile("Configuration\\TranslationLanguageIsoCodeToDescriptionEnUs.xml", "TranslationLanguageIsoCodeToDescriptions").ChildNodes)
+            foreach (XmlNode xmlTranslationLanguageIsoCodeToDescription in BaseClassExtention.XmlReadFile("Settings\\Data\\TranslationLanguageIsoCodeToDescriptionEnUs.xml", "Settings\\Schema\\TranslationLanguageIsoCodeToDescriptionEnUs.xsd", "TranslationLanguageIsoCodeToDescriptions").ChildNodes)
             {
-                this.translationLanguageIsoCodeToDescription.Add(xmlTranslationLanguageIsoCodeToDescription.Name, xmlTranslationLanguageIsoCodeToDescription.InnerText);
+                this.translationLanguageIsoCodeToDescription.Add(xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("LanguageIsoCode").InnerText, xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("LanguageDescription").InnerText);
             }
             #endregion
             #endregion

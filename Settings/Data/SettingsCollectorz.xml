@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Collectorz>
+  <MovieCollector>
+    <Version>Windows</Version>
+    <PathToFiles>
+      <RootDirectory>Q:\</RootDirectory>
+      <XmlExport>
+        <Action>read</Action>
+        <Directory>Collectorz.com\CollectorzToKodi</Directory>
+        <File>Filme.xml</File>
+      </XmlExport>
+      <Videos>
+        <Action>link</Action>
+        <Directory>Collectorz.com\CollectorzToKodi</Directory>
+        <File></File>
+      </Videos>
+      <Images>
+        <Action>copy</Action>
+        <Directory>Collectorz.com\CollectorzToKodi</Directory>
+        <File></File>
+      </Images>
+      <Subtitles>
+        <Action>copy</Action>
+        <Directory>Collectorz.com\CollectorzToKodi</Directory>
+        <File></File>
+      </Subtitles>
+    </PathToFiles>
+  </MovieCollector>
+</Collectorz>

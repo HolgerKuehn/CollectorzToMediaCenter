@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Servers>
+  <Server>
+    <Name>DOCUMENTS</Name>
+    <Collectorz>
+      <MovieCollector>
+        <RootDirectory>Q:\Collectorz.com\MovieCollector</RootDirectory>
+        <Type>Windows</Type>
+      </MovieCollector>
+      <MusicCollector>
+        <RootDirectory>Q:\Collectorz.com\MusicCollector</RootDirectory>
+        <Type>Windows</Type>
+      </MusicCollector>
+    </Collectorz>
+    <MediaStorage>
+      <RootDirectory>/share/Media/SHIRYOUSOOCHI/Programme</RootDirectory>
+      <Type>UNIX</Type>
+    </MediaStorage>
+    <MediaPublication>
+      <RootDirectory>/share/Media</RootDirectory>
+      <Type>UNIX</Type>
+    </MediaPublication>
+  </Server>
+</Servers>

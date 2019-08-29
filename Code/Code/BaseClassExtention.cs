@@ -9,6 +9,8 @@ namespace CollectorzToMediaCenter
     using System.IO;
     using System.Security.Policy;
     using System.Xml;
+    using System.Xml.Schema;
+    using System.Xml.XPath;
 
     /// <summary>
     /// extension class for base types
@@ -160,22 +162,32 @@ namespace CollectorzToMediaCenter
         /// <summary>
         /// reads root node of XML file
         /// </summary>
-        /// <param name="filename">Name of XML file to be read</param>
-        /// <param name="rootnodename">Name of root node</param>
+        /// <param name="xmlFile">Name of XML file to be read</param>
+        /// <param name="xmlSchema">Name of XML-Schema file to be read</param>
+        /// <param name="rootNodeName">Name of root node</param>
         /// <returns>XmlNode containing root node</returns>
-        public static XmlNode XmlReadFile(string filename, string rootnodename)
+        public static XmlNode XmlReadFile(string xmlFile, string xmlSchema, string rootNodeName)
         {
             // check if filename exists
-            if (!File.Exists(filename))
+            if (!File.Exists(xmlFile))
             {
                 return null;
             }
 
             // create XmlReader and XmlDocument from file
             XmlReaderSettings settings = new XmlReaderSettings();
-            settings.DtdProcessing = DtdProcessing.Parse;
-            settings.ValidationType = ValidationType.DTD;
-            XmlReader xmlReader = XmlReader.Create(filename, settings);
+
+            if (xmlSchema != null && File.Exists(xmlSchema)) {
+                settings.Schemas.Add("CollectorzToMediaCenter", xmlSchema);
+                settings.ValidationType = ValidationType.Schema;
+                settings.DtdProcessing = DtdProcessing.Parse;
+            } else
+            {
+                settings.ValidationType = ValidationType.None;
+                settings.DtdProcessing = DtdProcessing.Ignore;
+            }
+
+            XmlReader xmlReader = XmlReader.Create(xmlFile, settings);
             Evidence myEvidence = new Evidence();
             XmlDocument xmlInputFile = new XmlDocument();
             xmlInputFile.XmlResolver = new XmlSecureResolver(new XmlUrlResolver(), myEvidence);
@@ -183,13 +195,14 @@ namespace CollectorzToMediaCenter
             try
             {
                 xmlInputFile.Load(xmlReader);
+                xmlInputFile.Validate(new ValidationEventHandler(new ValidationEventHandler(XmlReadFileValidation)));
             }
             catch (XmlException ex)
             {
-                throw new Exception("The file \"" + filename + "\" does not contain valid XML.\n\n" + ex.ToString());
+                throw new Exception("The file \"" + xmlFile + "\" does not contain valid XML.\n\n" + ex.ToString());
             }
 
-            return xmlInputFile.SelectSingleNode(rootnodename);
+            return xmlInputFile.SelectSingleNode(rootNodeName);
         }
 
         /// <summary>
@@ -280,6 +293,16 @@ namespace CollectorzToMediaCenter
             }
 
             return node.InnerText;
+        }
+
+        /// <summary>
+        /// writes output of validation to console
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event</param>
+        private static void XmlReadFileValidation(object sender, ValidationEventArgs e)
+        {
+            Console.WriteLine("Validation Error: {0}", e.Message);
         }
 
         #endregion

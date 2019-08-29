@@ -127,11 +127,13 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.0\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.0\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>mkdir  "$(SolutionDir)Settings\"
-copy "$(SolutionDir)Settings\*.*" "$(TargetDir)Settings\"
-
-cd $(SolutionDir)Code\Documentation\
+    <PostBuildEvent>cd $(SolutionDir)Code\Documentation\
 doxygen doxyfile.conf
 </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>mkdir  "$(TargetDir)Settings\"
+xcopy /S /Y "$(SolutionDir)Settings\*.*" "$(TargetDir)Settings\"
+</PreBuildEvent>
   </PropertyGroup>
 </Project>
