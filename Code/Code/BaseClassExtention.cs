@@ -306,6 +306,5 @@ namespace CollectorzToMediaCenter
         }
 
         #endregion
-
     }
 }

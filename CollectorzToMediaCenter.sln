@@ -19,11 +19,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E462DDD5-5
 		Settings\Data\SettingsCollectorz.xml = Settings\Data\SettingsCollectorz.xml
 		Settings\Data\SettingServer.xml = Settings\Data\SettingServer.xml
 		Settings\Data\TranslationLanguageIsoCodeToDescriptionEnUs.xml = Settings\Data\TranslationLanguageIsoCodeToDescriptionEnUs.xml
+		Settings\Data\TranslationMimeTypeExtensionToDescription.xml = Settings\Data\TranslationMimeTypeExtensionToDescription.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{789CD0E6-C387-41C1-A5B4-0EF4F5010976}"
 	ProjectSection(SolutionItems) = preProject
 		Settings\Schema\TranslationLanguageIsoCodeToDescriptionEnUs.xsd = Settings\Schema\TranslationLanguageIsoCodeToDescriptionEnUs.xsd
+		Settings\Schema\TranslationMimeTypeExtensionToDescription.xsd = Settings\Schema\TranslationMimeTypeExtensionToDescription.xsd
 	EndProjectSection
 EndProject
 Global
