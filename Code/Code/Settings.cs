@@ -18,15 +18,15 @@ namespace CollectorzToMediaCenter
         #region Enums Part 1
 
         /// <summary>
+        /// Translations of ISO-Languagecodes to Description
+        /// </summary>
+        private readonly Dictionary<string, string> translationsLanguageIsoCodeToDescription;
+
+        /// <summary>
         /// Translations of file extensions to MimeTypes
         /// <remarks>List from github://cymen/ApacheMimeTypesToDotNet</remarks>
         /// </summary>
-        private readonly Dictionary<string, string> translationMimeTypeExtensionToDescription;
-
-        /// <summary>
-        /// Translations of ISO-Languagecodes to Description
-        /// </summary>
-        private readonly Dictionary<string, string> translationLanguageIsoCodeToDescription;
+        private readonly Dictionary<string, string> translationsMimeTypeExtensionToDescription;
         #endregion
         #region Attributes
 
@@ -66,19 +66,19 @@ namespace CollectorzToMediaCenter
             #region Dictionaries / Configuration
             #region Translations
             #region Translations - MimeTypeExtensionToDescription
-            this.translationMimeTypeExtensionToDescription = new Dictionary<string, string>();
+            this.translationsMimeTypeExtensionToDescription = new Dictionary<string, string>();
 
             foreach (XmlNode xmlTranslationLanguageIsoCodeToDescription in BaseClassExtention.XmlReadFile("Settings\\Data\\TranslationMimeTypeExtensionToDescription.xml", "Settings\\Schema\\TranslationMimeTypeExtensionToDescription.xsd", "TranslationMimeTypeExtensionToDescriptions").ChildNodes)
             {
-                this.translationMimeTypeExtensionToDescription.Add(xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("MimeTypeExtension").InnerText, xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("MimeTypeDescription").InnerText);
+                this.translationsMimeTypeExtensionToDescription.Add(xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("MimeTypeExtension").InnerText, xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("MimeTypeDescription").InnerText);
             }
             #endregion
             #region Translations - LanguageIsoCodeToDescription
-            this.translationLanguageIsoCodeToDescription = new Dictionary<string, string>();
+            this.translationsLanguageIsoCodeToDescription = new Dictionary<string, string>();
 
             foreach (XmlNode xmlTranslationLanguageIsoCodeToDescription in BaseClassExtention.XmlReadFile("Settings\\Data\\TranslationLanguageIsoCodeToDescriptionEnUs.xml", "Settings\\Schema\\TranslationLanguageIsoCodeToDescriptionEnUs.xsd", "TranslationLanguageIsoCodeToDescriptions").ChildNodes)
             {
-                this.translationLanguageIsoCodeToDescription.Add(xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("LanguageIsoCode").InnerText, xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("LanguageDescription").InnerText);
+                this.translationsLanguageIsoCodeToDescription.Add(xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("LanguageIsoCode").InnerText, xmlTranslationLanguageIsoCodeToDescription.XmlReadSubnode("LanguageDescription").InnerText);
             }
             #endregion
             #endregion
@@ -307,11 +307,20 @@ namespace CollectorzToMediaCenter
         /// </summary>
         /// <returns>list of translations for ISO-codes to descriptions</returns>
         /// [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed.")]
-        public Dictionary<string, string> TranslationLanguageIsoCodeToDescription
+        public Dictionary<string, string> TranslationsLanguageIsoCodeToDescription
         {
-            get { return this.translationLanguageIsoCodeToDescription; }
+            get { return this.translationsLanguageIsoCodeToDescription; }
         }
 
+        /// <summary>
+        /// Gets list of translations for file extensions to descriptions<br/>
+        /// </summary>
+        /// <returns>list of translations for file extensions to descriptions</returns>
+        /// [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed.")]
+        public Dictionary<string, string> TranslationsMimeTypeExtensionToDescription
+        {
+            get { return this.translationsMimeTypeExtensionToDescription; }
+        }
         #endregion
         #endregion
         #region Methods

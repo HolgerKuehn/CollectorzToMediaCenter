@@ -17,15 +17,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E462DDD5-54EF-47BE-8549-C5C4D39015DE}"
 	ProjectSection(SolutionItems) = preProject
 		Settings\Data\SettingsCollectorz.xml = Settings\Data\SettingsCollectorz.xml
-		Settings\Data\SettingServer.xml = Settings\Data\SettingServer.xml
-		Settings\Data\TranslationLanguageIsoCodeToDescriptionEnUs.xml = Settings\Data\TranslationLanguageIsoCodeToDescriptionEnUs.xml
-		Settings\Data\TranslationMimeTypeExtensionToDescription.xml = Settings\Data\TranslationMimeTypeExtensionToDescription.xml
+		Settings\Data\SettingsServer.xml = Settings\Data\SettingsServer.xml
+		Settings\Data\TranslationsLanguageIsoCodeToDescriptionEnUs.xml = Settings\Data\TranslationsLanguageIsoCodeToDescriptionEnUs.xml
+		Settings\Data\TranslationsMimeTypeExtensionToDescription.xml = Settings\Data\TranslationsMimeTypeExtensionToDescription.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{789CD0E6-C387-41C1-A5B4-0EF4F5010976}"
 	ProjectSection(SolutionItems) = preProject
-		Settings\Schema\TranslationLanguageIsoCodeToDescriptionEnUs.xsd = Settings\Schema\TranslationLanguageIsoCodeToDescriptionEnUs.xsd
-		Settings\Schema\TranslationMimeTypeExtensionToDescription.xsd = Settings\Schema\TranslationMimeTypeExtensionToDescription.xsd
+		Settings\Schema\TranslationsLanguageIsoCodeToDescriptionEnUs.xsd = Settings\Schema\TranslationsLanguageIsoCodeToDescriptionEnUs.xsd
+		Settings\Schema\TranslationsMimeTypeExtensionToDescription.xsd = Settings\Schema\TranslationsMimeTypeExtensionToDescription.xsd
 	EndProjectSection
 EndProject
 Global
